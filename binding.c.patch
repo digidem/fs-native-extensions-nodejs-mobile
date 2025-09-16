@@ -1,0 +1,14 @@
+--- a/binding.c
++++ b/binding.c
+@@ -5,6 +5,11 @@
+
+ #include "include/fs-ext.h"
+ #include "macros.h"
++
++// Compatibility fix for nodejs-mobile Android builds
++#ifndef UV_ENODATA
++#define UV_ENODATA (-4024)
++#endif
+
+ typedef struct {
+   fs_ext_lock_t req;
