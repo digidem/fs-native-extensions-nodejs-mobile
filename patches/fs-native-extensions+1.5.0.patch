@@ -1,0 +1,15 @@
+diff --git a/binding.c b/binding.c
+--- a/binding.c
++++ b/binding.c
+@@ -9,6 +9,11 @@
+
+ #include "src/platform.h"
+
++// Compatibility fix for nodejs-mobile Android builds
++#ifndef UV_ENODATA
++#define UV_ENODATA (-4024)
++#endif
++
+ typedef utf8_t fs_ext_js_path_t[4096 + 1 /* NULL */];
+
+ typedef struct {
